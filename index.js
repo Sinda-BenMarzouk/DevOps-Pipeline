@@ -11,7 +11,7 @@ app.listen(port, () => {
 })
 
 const helloWorld = () => {
-    return 'hello world'
+    return 'hello sinda'
 }
 
 module.exports= {helloWorld}
