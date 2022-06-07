@@ -7,4 +7,4 @@ A simple python application used to demonstrate the examples of the 4 types of s
 - We used sqlite3 for the database. The method "db.create_all" creates a database with all the tables we specified (in our case, only Note)
 - We used Flask for the web development.
 
- 
+![Imgur] (https://imgur.com/TY7Gkyr)
