@@ -23,13 +23,15 @@ https://user-images.githubusercontent.com/60546216/172417281-4435aae7-8923-40c2-
 - We integrated a CI/CD pipeline on Push using GitHub Actions, Docker and Amazon EC2.
 
 The workflow consists of 3 jobs :
+
+
     * Test: Run Unit Tests and Integration Tests.
     ![test](https://user-images.githubusercontent.com/60546216/172487113-b28cc890-a4c3-4b21-a43c-203db598e4c7.png)
     
     * Build : Build the Docker Image and push it to Dockerhub.
   ![build](https://user-images.githubusercontent.com/60546216/172487509-825afb87-0b70-4960-a164-cb529d77c9bf.png)
 
- 
+
     
     * Deploy : It is an EC2 deployment job through ssh.
 ![deploy](https://user-images.githubusercontent.com/60546216/172487527-ec8f56ed-513a-437e-aae7-1436d2334b32.png)
