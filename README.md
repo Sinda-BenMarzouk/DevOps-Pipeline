@@ -27,10 +27,11 @@ The workflow consists of 3 jobs :
     ![test](https://user-images.githubusercontent.com/60546216/172487113-b28cc890-a4c3-4b21-a43c-203db598e4c7.png)
     
     * Build : Build the Docker Image and push it to Dockerhub.
-    ![build](https://user-images.githubusercontent.com/60546216/172487221-5e5788f6-ff24-4538-a931-d8b11544f28d.png)
+  ![build](https://user-images.githubusercontent.com/60546216/172487509-825afb87-0b70-4960-a164-cb529d77c9bf.png)
+
  
     
     * Deploy : It is an EC2 deployment job through ssh.
-    ![deploy](https://user-images.githubusercontent.com/60546216/172487369-44511307-0f73-48df-8581-8d519bb95ac8.png)
+![deploy](https://user-images.githubusercontent.com/60546216/172487527-ec8f56ed-513a-437e-aae7-1436d2334b32.png)
 
     
