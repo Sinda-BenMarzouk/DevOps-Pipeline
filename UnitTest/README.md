@@ -9,7 +9,7 @@
 ### Test Execution:
 
 <p align="center">
-    <img src="../../images/unit.PNG" alt="Unit tests execution">
+    <img src="../images/unit.PNG" alt="Unit tests execution">
 </p>
 
 - The 3 tests are Ok.
