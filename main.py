@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import sqlite3
 import os
 
 app = Flask(__name__)
@@ -18,10 +19,12 @@ class Note(db.Model):
 
 
 def create_note(text):
-    note = Note(text=text)
-    db.session.add(note)
-    db.session.commit()
-    db.session.refresh(note)
+    database_filename = os.environ.get('DATABASE_FILENAME')
+    connection = sqlite3.connect(database_filename, check_same_thread=False)
+    connection.execute(
+        "INSERT INTO Note (TEXT) VALUES (?);", (text,))
+    connection.commit()
+
 
 
 def read_notes():
@@ -29,16 +32,19 @@ def read_notes():
 
 
 def update_note(note_id, text, done):
-    db.session.query(Note).filter_by(id=note_id).update({
-        "text": text,
-        "done": True if done == "on" else False
-    })
-    db.session.commit()
+    database_filename = os.environ.get('DATABASE_FILENAME')
+    connection = sqlite3.connect(database_filename, check_same_thread=False)
+    connection.execute(
+        "UPDATE NOTE SET TEXT=?, WHERE NOTE_ID=?;", (text,id,))
+    connection.commit()
 
 
 def delete_note(note_id):
-    db.session.query(Note).filter_by(id=note_id).delete()
-    db.session.commit()
+    database_filename = os.environ.get('DATABASE_FILENAME')
+    connection = sqlite3.connect(database_filename, check_same_thread=False)
+    connection.execute(
+        "DELETE FROM NOTE WHERE NOTE_ID=?;",(note_id,))
+    connection.commit()
 
 
 @app.route("/", methods=["POST", "GET"])
