@@ -1,68 +1,58 @@
+from cgitb import text
 from flask import Flask, request, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import sqlite3
 import os
+from database import create_db
+from note import create_note, update_note, read_note_by_id, delete_note
 
-app = Flask(__name__)
-project_dir = os.path.dirname(os.path.abspath(__file__))
-database_file = "sqlite:///{}".format(os.path.join(project_dir, "todo.db"))
-app.config["SQLALCHEMY_DATABASE_URI"] = database_file
-db = SQLAlchemy(app)
+def create_app(name, test=False):
+    if test:
+        app = Flask(name,template_folder='../templates')
+    else:
+        app = Flask(name, template_folder='templates')
 
-
-class Note(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    text = db.Column(db.Text)
-    done = db.Column(db.Boolean)
-    dateAdded = db.Column(db.DateTime, default=datetime.now())
-
-
-def create_note(text):
-    database_filename = os.environ.get('DATABASE_FILENAME')
-    connection = sqlite3.connect(database_filename, check_same_thread=False)
-    connection.execute(
-        "INSERT INTO Note (TEXT) VALUES (?);", (text,))
-    connection.commit()
+    # Index
+    @app.route('/')
+    def index():
+        return render_template('index.html')
 
 
+    # Create Note
+    @app.route("/=", methods=['GET', 'POST'])
+    def createnote():
+        if request.method == 'POST':
+            text= request.form['text']
+            create_note(text)
+            return redirect('/')
+        else:
+            return render_template('index.html')
 
-def read_notes():
-    return db.session.query(Note).all()
+    # Update Note
+    @app.route('/update/<int:id>', methods=['GET', 'POST'])
+    def updatenote(id):
+        note = read_note_by_id(id)
+        if request.method == 'POST':
+            text = request.form['text']
+            update_note(id,text)
+            return redirect('/')
+        else:
+            return render_template('index.html')
 
-
-def update_note(note_id, text, done):
-    database_filename = os.environ.get('DATABASE_FILENAME')
-    connection = sqlite3.connect(database_filename, check_same_thread=False)
-    connection.execute(
-        "UPDATE NOTE SET TEXT=?, WHERE NOTE_ID=?;", (text,id,))
-    connection.commit()
-
-
-def delete_note(note_id):
-    database_filename = os.environ.get('DATABASE_FILENAME')
-    connection = sqlite3.connect(database_filename, check_same_thread=False)
-    connection.execute(
-        "DELETE FROM NOTE WHERE NOTE_ID=?;",(note_id,))
-    connection.commit()
-
-
-@app.route("/", methods=["POST", "GET"])
-def view_index():
-    if request.method == "POST":
-        create_note(request.form['text'])
-    return render_template("index.html", notes=read_notes())
-
-
-@app.route("/edit/<note_id>", methods=["POST", "GET"])
-def edit_note(note_id):
-    if request.method == "POST":
-        update_note(note_id, text=request.form['text'], done=request.form['done'])
-    elif request.method == "GET":
-        delete_note(note_id)
-    return redirect("/", code=302)
+    # Delete Note
+    @app.route('/delete/<int:id>')
+    def detelenote(id):
+        note_to_delete = read_note_by_id(id)
+        delete_note(note_to_delete[0])
+        return redirect('/')
 
 
-if __name__ == "__main__":
-    db.create_all()
-    app.run(debug=True)
+def main( db='todo.db', create=False):
+    if create:
+        create_db(db)
+    os.environ['DATABASE_FILENAME'] = db
+    app = create_app(__name__)
+    app.run(host='0.0.0.0', port=5000)
+
+if __name__ == '__main__':
+    main()
