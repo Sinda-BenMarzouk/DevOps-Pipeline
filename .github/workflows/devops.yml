@@ -20,8 +20,6 @@ jobs:
       - name: Testing
         run: |
           coverage run -m pytest
-
-  
   Build:
     runs-on: ubuntu-latest
     needs : 
@@ -43,7 +41,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/my-express:latest
-  
   Deploy:
     needs: Build
     runs-on: ubuntu-latest
