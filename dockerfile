@@ -1,8 +1,11 @@
-FROM node:18-bullseye
-WORKDIR /app
-COPY package*.json .
-RUN npm install 
-COPY . .
-EXPOSE 3000
-CMD npm run start
+FROM python:3.9-bullseye
 
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 5000
+CMD [ "python", "main.py" ]
