@@ -26,7 +26,8 @@ The workflow consists of 3 jobs :
 
 
     * Test: Run Unit Tests and Integration Tests.
-    ![test](https://user-images.githubusercontent.com/60546216/172487113-b28cc890-a4c3-4b21-a43c-203db598e4c7.png)
+ ![test](https://user-images.githubusercontent.com/60546216/172487904-eb5aa3b8-916b-4d1c-a917-af626cd632c8.png)
+
     
     * Build : Build the Docker Image and push it to Dockerhub.
   ![build](https://user-images.githubusercontent.com/60546216/172487509-825afb87-0b70-4960-a164-cb529d77c9bf.png)
