@@ -24,5 +24,13 @@ https://user-images.githubusercontent.com/60546216/172417281-4435aae7-8923-40c2-
 
 The workflow consists of 3 jobs :
     * Test: Run Unit Tests and Integration Tests.
-    * Build and Release: Build the Docker Image and push it to Dockerhub.
+    ![test](https://user-images.githubusercontent.com/60546216/172487113-b28cc890-a4c3-4b21-a43c-203db598e4c7.png)
+    
+    * Build : Build the Docker Image and push it to Dockerhub.
+    ![build](https://user-images.githubusercontent.com/60546216/172487221-5e5788f6-ff24-4538-a931-d8b11544f28d.png)
+ 
+    
     * Deploy : It is an EC2 deployment job through ssh.
+    ![deploy](https://user-images.githubusercontent.com/60546216/172487369-44511307-0f73-48df-8581-8d519bb95ac8.png)
+
+    
