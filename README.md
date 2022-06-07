@@ -20,5 +20,9 @@ https://user-images.githubusercontent.com/60546216/172417281-4435aae7-8923-40c2-
     * UAT
 
 ## Devops Pipeline
+- We integrated a CI/CD pipeline on Push using GitHub Actions, Docker and Amazon EC2.
 
-
+The workflow consists of 3 jobs :
+    * Test: Run Unit Tests and Integration Tests.
+    * Build and Release: Build the Docker Image and push it to Dockerhub.
+    * Deploy : It is an EC2 deployment job through ssh.
