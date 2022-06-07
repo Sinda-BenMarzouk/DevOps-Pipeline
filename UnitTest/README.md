@@ -8,6 +8,8 @@
 
 ### Test Execution:
 
-![Imgur](https://imgur.com/aq8e0yG)
+<p align="center">
+    <img src="../images/unit.PNG" alt="Unit tests execution">
+</p>
 
 - The 3 tests are Ok.
