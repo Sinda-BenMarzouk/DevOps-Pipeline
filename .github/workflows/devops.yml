@@ -1,7 +1,7 @@
 name: DevOps pipeline
 on: [push]
 jobs:
-  Test:
+   Test:
     runs-on: ubuntu-latest
     strategy:
       matrix:

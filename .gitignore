@@ -1,2 +1,4 @@
-node_modules
-.idea 
+.idea
+__pycache__
+/UnitTest/__pycache__
+.coverage

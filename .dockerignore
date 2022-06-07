@@ -1,5 +1,11 @@
-node_modules
 dockerfile
-*.spec.js
 .dockerignore
-
+.git*
+.coverage
+.pytest_cache
+__pycache__
+UnitTest
+IntegrationTest
+e2e Test
+README.md
+requirements.txt
