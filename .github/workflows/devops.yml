@@ -20,9 +20,6 @@ jobs:
       - name: Testing
         run: |
           coverage run -m pytest
-      - name: Coverage
-        run: |
-          coverage report
 
   
   Build:
