@@ -8,8 +8,7 @@
 
 ### Test Execution:
 
-<p align="center">
-    <img src="../../static/img/unit.png" alt="Unit tests execution">
-</p>
+![unit](https://user-images.githubusercontent.com/60546216/172417086-a6d6bf44-b75c-43ab-9eda-a5e9995e9966.png)
+
 
 - The 3 tests are Ok.
